@@ -1,1 +1,35 @@
 // Variables
+// Breakpoints
+$breakpoints: (sm: 468px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+  xxl: 1400px);
+
+
+// Container
+$max-width:1660px;
+
+// Gap
+$gap: 25px;
+
+// Display
+$display:(none:'none',
+  inline:'inline',
+  inline-block:'inline-block',
+  block:'block',
+  flex:'flex'
+); // Flex Properties
+
+$flex:('align', 'justify'
+);
+
+$flex-property:('content', 'items', 'self'
+);
+
+$flex-dec:(
+  start:'flex-start',
+  center:'center',
+  end:'flex-end',
+  baseline:'baseline'
+);

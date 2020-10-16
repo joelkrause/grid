@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+    max-width: $max-width;
+    padding: 0 $gap;
+    margin: 0 auto;
+
+    &-fluid {
+        padding: 0 $gap;
+        max-width: 100%;
+    }
+
+    &-full {
+        max-width: 100%;
+    }
+}

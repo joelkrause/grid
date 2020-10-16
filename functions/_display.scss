@@ -1,0 +1,14 @@
+// Display properties
+
+@each $name,
+$size in $breakpoints {
+    @media (min-width: #{$size}) {
+
+        @each $display_name,
+        $display_property in $display {
+            .d-#{$name}-#{$display_name} {
+                display: #{$display_property};
+            }
+        }
+    }
+}

@@ -1,8 +1,6 @@
 // Functions
-@mixin make-columns($column,$breakpoint){
-grid-column-template: span #{$column};
-}
-
-@mixin make-offsets($column,$offset,$breakpoint){
-grid-column-template: #{$offset} / span #{$column};
+@mixin make-columns($column) {
+    &-#{$column} {
+        grid-column: span #{$column};
+    }
 }

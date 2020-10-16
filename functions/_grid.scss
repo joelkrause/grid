@@ -1,0 +1,6 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, calc(100% / 12 - #{$gap}));
+    gap: $gap;
+    width: 100%;
+}
