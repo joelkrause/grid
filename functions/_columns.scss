@@ -1,31 +1,10 @@
-.column {
-    // Set initial column width as 12 all the time
-    grid-column: span 12;
+@include make-columns();
 
-    // Set starting column width
-    @for $column from 1 through 12 {
-        @include make-columns($column);
-    }
+// Offset
+@include make-offsets();
 
-    @each $name,
-    $size in $breakpoints {
-        @media (min-width: #{$size}) {
-            &-#{$name} {
-                @for $column from 1 through 12 {
-                    &-#{$column} {
-                        grid-column: span #{$column};
+// Display
+@include make-displays();
 
-                        @each $name,
-                        $size in $breakpoints {
-                            @for $offset from 1 through 6 {
-                                &.offset-#{$name}-#{$offset} {
-                                    grid-column: #{$offset + 1} / span #{$column};
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+// Flex
+@include make-flex();

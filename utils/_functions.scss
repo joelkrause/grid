@@ -1,6 +1,101 @@
 // Functions
-@mixin make-columns($column) {
-    &-#{$column} {
-        grid-column: span #{$column};
+@mixin make-columns() {
+    @for $column from 1 through 12 {
+        .col-#{$column} {
+            grid-column: span #{$column};
+        }
+    }
+
+    @each $name,
+    $size in $breakpoints {
+
+        @media (min-width: #{$size}) {
+            .col {
+                @for $column from 1 through 12 {
+                    &-#{$name}-#{$column} {
+                        grid-column: span #{$column};
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin make-offsets() {
+
+    @each $name,
+    $size in $breakpoints {
+
+        @media (min-width: #{$size}) {
+            .offset {
+
+                // grid-column: span #{$column};
+                @for $column from 1 through 6 {
+                    &-#{$name}-#{$column} {
+                        grid-column: #{$column + 1} / span #{$column};
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin make-displays() {
+
+    @each $display_name,
+    $display_property in $display {
+        .d-#{$display_name} {
+            display: #{$display_property};
+        }
+    }
+
+    @each $name,
+    $size in $breakpoints {
+
+        @media (min-width: #{$size}) {
+            .d {
+
+                @each $display_name,
+                $display_property in $display {
+                    &-#{$name} {
+                        &-#{$display_name} {
+                            display: #{$display_property};
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin make-flex() {
+
+    @each $flex_name in $flex {
+        @each $property_name in $flex-property {
+
+            @each $dec_abbr,
+            $dec_name in $flex-dec {
+                .#{$flex_name}-#{$property_name}-#{$dec_abbr} {
+                    #{$flex_name}-#{$property_name}: $dec_name;
+                }
+            }
+        }
+    }
+
+    @each $bp_name,
+    $size in $breakpoints {
+        @media (min-width: #{$size}) {
+            @each $flex_name in $flex {
+                @each $property_name in $flex-property {
+
+                    @each $dec_abbr,
+                    $dec_name in $flex-dec {
+                        .#{$flex_name}-#{$bp_name}-#{$property_name}-#{$dec_abbr} {
+                            #{$flex_name}-#{$property_name}: $dec_name;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
