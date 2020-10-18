@@ -3,6 +3,7 @@
     max-width: $max-width;
     padding: 0 $gap;
     margin: 0 auto;
+    display: flex;
 
     &-fluid {
         padding: 0 $gap;

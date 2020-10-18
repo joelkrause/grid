@@ -3,4 +3,13 @@
     grid-template-columns: repeat(12, calc(100% / 12 - #{$gap}));
     gap: $gap;
     width: 100%;
+
+    &.no-gap {
+        grid-template-columns: repeat(12, calc(100% / 12));
+        gap: 0;
+    }
+}
+
+* {
+    box-sizing: content-box;
 }

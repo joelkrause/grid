@@ -28,11 +28,10 @@
 
         @media (min-width: #{$size}) {
             .offset {
-
-                // grid-column: span #{$column};
                 @for $column from 1 through 6 {
+                    $num: $column / $column / 2;
                     &-#{$name}-#{$column} {
-                        grid-column: #{$column + 1} / span #{$column};
+                        margin-left: if($num == 0, 0, percentage($num));
                     }
                 }
             }
