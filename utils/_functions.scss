@@ -1,25 +1,32 @@
 // Functions
-@mixin make-columns() {
-    @for $column from 1 through 12 {
-        .col-#{$column} {
-            grid-column: span #{$column};
-        }
-    }
+// @mixin make-columns() {
+//     @for $column from 1 through 12 {
+//         .col-#{$column} {
+//             grid-column: span #{$column};
+//         }
+//     }
 
-    @each $name,
-    $size in $breakpoints {
+//     @each $name,
+//     $size in $breakpoints {
 
-        @media (min-width: #{$size}) {
-            .col {
-                @for $column from 1 through 12 {
-                    &-#{$name}-#{$column} {
-                        grid-column: span #{$column};
-                    }
-                }
-            }
-        }
+//         @media (min-width: #{$size}) {
+//             .col {
+//                 @for $column from 1 through 12 {
+//                     &-#{$name}-#{$column} {
+//                         grid-column: span #{$column};
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+@mixin make-columns($column) {
+    &-#{$column} {
+      grid-column: span #{$column};
     }
-}
+  }
+
 
 @mixin make-offsets() {
 
@@ -28,10 +35,11 @@
 
         @media (min-width: #{$size}) {
             .offset {
-                @for $column from 1 through 6 {
+                @for $column from 1 through 12 {
                     $num: $column / $column / 2;
+
                     &-#{$name}-#{$column} {
-                        margin-left: if($num == 0, 0, percentage($num));
+                        margin-left: if($num==0, 0, percentage($num));
                     }
                 }
             }
@@ -69,12 +77,13 @@
 
 @mixin make-flex() {
 
-    @each $flex_name in $flex {
+    @each $flex_abbr,
+    $flex_name in $flex {
         @each $property_name in $flex-property {
 
             @each $dec_abbr,
             $dec_name in $flex-dec {
-                .#{$flex_name}-#{$property_name}-#{$dec_abbr} {
+                .#{$flex_abbr}-#{$property_name}-#{$dec_abbr} {
                     #{$flex_name}-#{$property_name}: $dec_name;
                 }
             }

@@ -1,7 +1,6 @@
 // Variables
 // Breakpoints
-$breakpoints: (
-  sm: 468px,
+$breakpoints: (sm: 468px,
   md: 768px,
   lg: 1024px,
   xl: 1200px,
@@ -22,14 +21,11 @@ $display:(none:'none',
   flex:'flex'
 ); // Flex Properties
 
-$flex:('align', 'justify'
-);
+$flex:(a:'align', j:'justify');
 
-$flex-property:('content', 'items', 'self'
-);
+$flex-property:('content', 'items', 'self');
 
-$flex-dec:(
-  start:'flex-start',
+$flex-dec:(start:'flex-start',
   center:'center',
   end:'flex-end',
   baseline:'baseline'
