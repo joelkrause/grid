@@ -1,0 +1,29 @@
+@mixin mq($direction, $breakpoint) {
+  @if $direction=='up' {
+    @if (map-get($breakpoints, $breakpoint)) {
+      @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+        @content;
+      }
+    }
+
+    @else {
+      @media (min-width: #{$breakpoint}px) {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @if (map-get($breakpoints, $breakpoint)) {
+      @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+        @content;
+      }
+    }
+
+    @else {
+      @media (max-width: #{$breakpoint}px) {
+        @content;
+      }
+    }
+  }
+}
